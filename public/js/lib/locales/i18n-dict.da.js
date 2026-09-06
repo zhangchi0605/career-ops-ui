@@ -8,6 +8,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_DA = {
+  'config.featherlessHint': "Featherless API-nøgle. Nøglen forbliver lokal og maskeres efter lagring. OpenAI-kompatibelt endpoint. ⚡ live eval",
+  'config.featherlessBaseUrlHint': "Standard: https://api.featherless.ai/v1. En komplet …/chat/completions-URL virker også.",
+  'config.featherlessModelHint': "Standard: zai-org/GLM-5.3-Flash. Model-id'er bruger Featherless publisher/model-notation.",
   'track.outcome.btn': "Resultat",
   'track.outcome.record': "Registrér resultat",
   'track.outcome.rejected': "Afvist",
@@ -184,8 +187,8 @@ window.__I18N_DICT_DA = {
   'config.viewProfile': "Vis skrivebeskyttet oversigt →",
   'config.gotoHealth': "Bekræft på Health",
   'config.llmProvider': "LLM-udbyder",
-  'config.llmProviderHint': "auto = brug den nøgle der er sat, med præference for Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = foretræk den — men hvis dens nøgle ikke er sat, falder den tilbage til enhver anden konfigureret udbyder. Kun uden nogen udbyder-nøgle → manuel prompt-tilstand.",
-  'config.providerModelNote': "career-ops er CLI-agnostisk — du kører det inde i et hvilket som helst AI-kodnings-CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi), hver med sit eget login. Denne web-UI er separat: dens ⚡ live-evaluering kører headless med en hvilken som helst af dine 18 udbydernøgler nedenfor — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — automatisk ordnet, med fallback når den fastgjorte udbyder ikke har en nøgle.",
+  'config.llmProviderHint': "auto = brug den nøgle der er sat, med præference for Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = foretræk den — men hvis dens nøgle ikke er sat, falder den tilbage til enhver anden konfigureret udbyder. Kun uden nogen udbyder-nøgle → manuel prompt-tilstand.",
+  'config.providerModelNote': "career-ops er CLI-agnostisk — du kører det inde i et hvilket som helst AI-kodnings-CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi), hver med sit eget login. Denne web-UI er separat: dens ⚡ live-evaluering kører headless med en hvilken som helst af dine 19 udbydernøgler nedenfor — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — automatisk ordnet, med fallback når den fastgjorte udbyder ikke har en nøgle.",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → API keys. v1.55.0: kører også web-ui live-vurderingen (3. i auto-rækkefølgen, efter Anthropic og Gemini); læses stadig af det overordnede Codex/OpenAI CLI-flow.",
   'config.anthropicKey': "Anthropic API-nøgle (Claude)",
@@ -563,7 +566,7 @@ window.__I18N_DICT_DA = {
   'scan.consoleReady': "> klar. tryk på scan-knappen.",
   'scan.noResults': "Ingen resultater. Kør en scanning ovenfor — resultaterne vises her, når den er færdig.",
   'app.setupIssue': "Opsætningsproblem: ",
-  'onboarding.noKey.title': "Ingen LLM-nøgle sat — \"⚡ Kør live\" er i manuel prompt-tilstand. Sæt en af Anthropic / Gemini / OpenAI / Qwen.",
+  'onboarding.noKey.title': "Ingen LLM-nøgle sat — \"⚡ Kør live\" er i manuel prompt-tilstand. Sæt en af Anthropic / Gemini / OpenAI / Qwen / Featherless.",
   'onboarding.noKey.cta': "Opsæt en nøgle →",
   'onboarding.activeProvider': "Live-vurdering",
   'cost.estimate': "Anslået omkostning",

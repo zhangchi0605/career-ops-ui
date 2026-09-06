@@ -9,6 +9,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_RU = {
+  'config.featherlessHint': "API-ключ Featherless. Ключ хранится только локально и скрывается после сохранения. Эндпоинт совместим с OpenAI. ⚡ live eval",
+  'config.featherlessBaseUrlHint': "По умолчанию: https://api.featherless.ai/v1. Также поддерживается полный URL …/chat/completions.",
+  'config.featherlessModelHint': "По умолчанию: zai-org/GLM-5.3-Flash. ID моделей используют формат publisher/model Featherless.",
   'track.outcome.btn': "Итог",
   'track.outcome.record': "Записать итог",
   'track.outcome.rejected': "Отказ",
@@ -185,8 +188,8 @@ window.__I18N_DICT_RU = {
   'config.viewProfile': "Открыть read-only сводку →",
   'config.gotoHealth': "Проверить в Health",
   'config.llmProvider': "LLM-провайдер",
-  'config.llmProviderHint': "auto = использовать любой заданный ключ, предпочитая Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = предпочесть этот — но если его ключ не задан, происходит откат к любому другому настроенному провайдеру. Только при полном отсутствии ключа провайдера → откат к ручному промпту.",
-  'config.providerModelNote': "career-ops не привязан к CLI — вы запускаете его внутри любого ИИ-CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi), у каждого свой вход. Этот веб-интерфейс отдельный: его ⚡ живая оценка выполняется headless на любом из ваших 18 ключей провайдеров ниже — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — с автопорядком и откатом, если у закреплённого провайдера нет ключа.",
+  'config.llmProviderHint': "auto = использовать любой заданный ключ, предпочитая Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = предпочесть этот — но если его ключ не задан, происходит откат к любому другому настроенному провайдеру. Только при полном отсутствии ключа провайдера → откат к ручному промпту.",
+  'config.providerModelNote': "career-ops не привязан к CLI — вы запускаете его внутри любого ИИ-CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi), у каждого свой вход. Этот веб-интерфейс отдельный: его ⚡ живая оценка выполняется headless на любом из ваших 19 ключей провайдеров ниже — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — с автопорядком и откатом, если у закреплённого провайдера нет ключа.",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → API keys. v1.55.0: также выполняет live-eval web-ui (3-й в порядке auto, после Anthropic и Gemini); по-прежнему читается родительским потоком Codex/OpenAI CLI.",
   'config.anthropicKey': "Anthropic API key (Claude)",
@@ -564,7 +567,7 @@ window.__I18N_DICT_RU = {
   'scan.consoleReady': "> ready. press «запустить scan».",
   'scan.noResults': "Нет результатов. Запустите скан выше — результаты появятся здесь после завершения.",
   'app.setupIssue': "Setup проблема: ",
-  'onboarding.noKey.title': "Ключ LLM не задан — «⚡ Запуск вживую» в режиме ручного промпта. Задайте любой из Anthropic / Gemini / OpenAI / Qwen.",
+  'onboarding.noKey.title': "Ключ LLM не задан — «⚡ Запуск вживую» в режиме ручного промпта. Задайте любой из Anthropic / Gemini / OpenAI / Qwen / Featherless.",
   'onboarding.noKey.cta': "Настроить ключ →",
   'onboarding.activeProvider': "Live-eval",
   'cost.estimate': "Оценочная стоимость",

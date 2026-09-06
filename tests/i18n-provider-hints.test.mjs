@@ -32,9 +32,10 @@ function extractHintKeys() {
   return keys;
 }
 
-// The 11 OpenAI-compatible providers whose signup-key hints (…Hint, not
+// The 12 OpenAI-compatible providers whose signup-key hints (…Hint, not
 // …ModelHint / …BaseUrlHint) run the live eval — each must keep the ⚡ marker.
 const EVAL_SIGNUP_HINTS = [
+  'config.featherlessHint',
   'config.deepseekHint', 'config.zaiHint', 'config.kimiHint', 'config.minimaxHint',
   'config.mistralHint', 'config.grokHint', 'config.togetherHint', 'config.fireworksHint',
   'config.ollamaHint', 'config.arkHint', 'config.arkcnHint',
@@ -76,6 +77,7 @@ test('extended-provider signup hints keep the ⚡ live-eval marker in every loca
 
 test('English extended-provider hints preserve their signup-URL / model tokens', () => {
   const tokens = {
+    'config.featherlessHint': 'Featherless',
     'config.deepseekHint': 'platform.deepseek.com',
     'config.zaiHint': 'z.ai',
     'config.kimiHint': 'platform.moonshot.ai',
@@ -89,6 +91,7 @@ test('English extended-provider hints preserve their signup-URL / model tokens',
     'config.arkcnHint': 'console.volcengine.com',
     'config.arkBaseUrlHint': 'ark.ap-southeast.bytepluses.com',
     'config.arkcnBaseUrlHint': 'ark.cn-beijing.volces.com',
+    'config.featherlessBaseUrlHint': 'api.featherless.ai/v1',
   };
   for (const [key, token] of Object.entries(tokens)) {
     assert.ok(DICT[key], `${key} missing`);

@@ -19,6 +19,7 @@ import {
   hasOpenAIKey, hasQwenKey, hasOpenRouterKey, hasGitHubModelsKey, hasHermesKey,
   runDeepSeek, runZai, runKimi, runMiniMax, runMistral, runGrok, runTogether, runFireworks, runOllama,
   hasDeepSeekKey, hasZaiKey, hasKimiKey, hasMiniMaxKey, hasMistralKey, hasGrokKey, hasTogetherKey, hasFireworksKey, hasOllamaKey,
+  runFeatherless, hasFeatherlessKey,
   runArk, runArkCn, hasArkKey, hasArkCnKey,
 } from './openai.mjs';
 import { providerOrder, AUTO_ORDER } from './env-config.mjs';
@@ -37,7 +38,7 @@ export const PROMPT_SIZE_SOFT_CAP = 200 * 1024;
 const HAS_KEY = {
   anthropic: hasAnthropicKey, gemini: hasGeminiKey,
   openai: hasOpenAIKey, qwen: hasQwenKey, openrouter: hasOpenRouterKey,
-  github: hasGitHubModelsKey, hermes: hasHermesKey,
+  github: hasGitHubModelsKey, hermes: hasHermesKey, featherless: hasFeatherlessKey,
   deepseek: hasDeepSeekKey, zai: hasZaiKey, kimi: hasKimiKey, minimax: hasMiniMaxKey,
   mistral: hasMistralKey, grok: hasGrokKey, together: hasTogetherKey,
   fireworks: hasFireworksKey, ollama: hasOllamaKey,
@@ -47,6 +48,7 @@ const HAS_KEY = {
 // branches in runActiveProvider). Order mirrors AUTO_ORDER.
 const TAIL_RUN = {
   openai: runOpenAI, qwen: runQwen, openrouter: runOpenRouter, github: runGitHubModels, hermes: runHermes,
+  featherless: runFeatherless,
   deepseek: runDeepSeek, zai: runZai, kimi: runKimi, minimax: runMiniMax,
   mistral: runMistral, grok: runGrok, together: runTogether, fireworks: runFireworks, ollama: runOllama,
   ark: runArk, arkcn: runArkCn,

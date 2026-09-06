@@ -9,6 +9,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_IT = {
+  'config.featherlessHint': "Chiave API Featherless. La chiave resta locale e viene mascherata dopo il salvataggio. Endpoint compatibile con OpenAI. ⚡ live eval",
+  'config.featherlessBaseUrlHint': "Predefinito: https://api.featherless.ai/v1. Funziona anche un URL completo …/chat/completions.",
+  'config.featherlessModelHint': "Predefinito: zai-org/GLM-5.3-Flash. Gli ID dei modelli usano la notazione publisher/model di Featherless.",
   'track.outcome.btn': "Esito",
   'track.outcome.record': "Registra esito",
   'track.outcome.rejected': "Rifiutato",
@@ -185,8 +188,8 @@ window.__I18N_DICT_IT = {
   'config.viewProfile': "Visualizza riepilogo in sola lettura →",
   'config.gotoHealth': "Verifica su Salute",
   'config.llmProvider': "Provider LLM",
-  'config.llmProviderHint': "auto = usa la chiave impostata, preferendo Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = preferisci quello — ma se la sua chiave non è impostata, ripiega su qualsiasi altro provider configurato. Solo senza alcuna chiave provider → fallback al prompt manuale.",
-  'config.providerModelNote': "career-ops è agnostico rispetto alla CLI — lo esegui dentro qualsiasi CLI di IA (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi), ciascuna con il proprio accesso. Questa interfaccia web è separata: la sua valutazione live ⚡ gira headless con una qualsiasi delle tue 18 chiavi di provider qui sotto — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — ordinate automaticamente, con fallback quando il provider fissato non ha una chiave.",
+  'config.llmProviderHint': "auto = usa la chiave impostata, preferendo Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = preferisci quello — ma se la sua chiave non è impostata, ripiega su qualsiasi altro provider configurato. Solo senza alcuna chiave provider → fallback al prompt manuale.",
+  'config.providerModelNote': "career-ops è agnostico rispetto alla CLI — lo esegui dentro qualsiasi CLI di IA (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi), ciascuna con il proprio accesso. Questa interfaccia web è separata: la sua valutazione live ⚡ gira headless con una qualsiasi delle tue 19 chiavi di provider qui sotto — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — ordinate automaticamente, con fallback quando il provider fissato non ha una chiave.",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → API keys. v1.55.0: esegue anche la valutazione live della web-ui (3ª nell'ordine automatico, dopo Anthropic e Gemini); ancora letta anche dal flusso CLI Codex/OpenAI del padre.",
   'config.anthropicKey': "Chiave API Anthropic (Claude)",
@@ -564,7 +567,7 @@ window.__I18N_DICT_IT = {
   'scan.consoleReady': "> pronto. premi il pulsante di scansione.",
   'scan.noResults': "Nessun risultato. Esegui una scansione qui sopra — i risultati appariranno qui una volta terminata.",
   'app.setupIssue': "Problema di configurazione: ",
-  'onboarding.noKey.title': "Nessuna chiave LLM impostata — “⚡ Esegui in tempo reale” è in modalità prompt manuale. Imposta almeno una tra Anthropic / Gemini / OpenAI / Qwen.",
+  'onboarding.noKey.title': "Nessuna chiave LLM impostata — “⚡ Esegui in tempo reale” è in modalità prompt manuale. Imposta almeno una tra Anthropic / Gemini / OpenAI / Qwen / Featherless.",
   'onboarding.noKey.cta': "Configura una chiave →",
   'onboarding.activeProvider': "Valutazione live",
   'cost.estimate': "Costo stimato",

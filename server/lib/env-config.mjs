@@ -33,6 +33,9 @@ export const KNOWN_KEYS = [
   'HERMES_API_KEY',        // headless live-eval via a local Hermes API Server (v1.151.0) — Nous Research's `hermes gateway` exposes an OpenAI-compatible /v1/chat/completions (Bearer API_SERVER_KEY)
   'HERMES_BASE_URL',       // Hermes API Server base (default http://127.0.0.1:8642/v1); change if you set API_SERVER_PORT
   'HERMES_MODEL',          // Hermes profile / model id (default `hermes-agent`)
+  'FEATHERLESS_API_KEY',   // headless live-eval via Featherless (OpenAI-compatible)
+  'FEATHERLESS_MODEL',
+  'FEATHERLESS_BASE_URL',  // default https://api.featherless.ai/v1
   // ── Extended provider roster (v1.216.0) — OpenAI-compatible vendors, one
   //    key each; all reach the shared runOpenAICompatible core. ──
   'DEEPSEEK_API_KEY', 'DEEPSEEK_MODEL',
@@ -55,14 +58,14 @@ export const KNOWN_KEYS = [
 // LLM_PROVIDER returns just `[slug]`; `auto` walks the whole order and uses the
 // first provider whose key is set. Ollama is last — it's local/opt-in.
 export const AUTO_ORDER = [
-  'anthropic', 'gemini', 'openai', 'qwen', 'openrouter', 'github', 'hermes',
+  'anthropic', 'gemini', 'openai', 'qwen', 'openrouter', 'github', 'hermes', 'featherless',
   'deepseek', 'zai', 'kimi', 'minimax', 'mistral', 'grok', 'together', 'fireworks', 'ollama',
   'ark', 'arkcn',
 ];
 // Slugs whose LLM_PROVIDER pin value equals the internal provider name
 // (unlike `claude`→`anthropic`). Pinning any of these returns just itself.
 const SELF_NAMED_PINS = new Set([
-  'openai', 'qwen', 'openrouter', 'github', 'hermes',
+  'openai', 'qwen', 'openrouter', 'github', 'hermes', 'featherless',
   'deepseek', 'zai', 'kimi', 'minimax', 'mistral', 'grok', 'together', 'fireworks', 'ollama',
   'ark', 'arkcn',
 ]);
@@ -73,7 +76,7 @@ const SELF_NAMED_PINS = new Set([
  * one provider; with no key it falls through to the manual-prompt
  * path exactly like the pre-v1.39 no-key behaviour.
  */
-export const LLM_PROVIDERS = ['auto', 'claude', 'gemini', 'openai', 'qwen', 'openrouter', 'github', 'hermes', 'deepseek', 'zai', 'kimi', 'minimax', 'mistral', 'grok', 'together', 'fireworks', 'ollama', 'ark', 'arkcn'];
+export const LLM_PROVIDERS = ['auto', 'claude', 'gemini', 'openai', 'qwen', 'openrouter', 'github', 'hermes', 'featherless', 'deepseek', 'zai', 'kimi', 'minimax', 'mistral', 'grok', 'together', 'fireworks', 'ollama', 'ark', 'arkcn'];
 
 /**
  * Effective provider preference order from LLM_PROVIDER:
@@ -147,6 +150,9 @@ export const KEY_GROUPS = {
   HERMES_API_KEY: 'core',
   HERMES_BASE_URL: 'core',
   HERMES_MODEL: 'core',
+  FEATHERLESS_API_KEY: 'core',
+  FEATHERLESS_BASE_URL: 'core',
+  FEATHERLESS_MODEL: 'core',
   PORT: 'runtime',
   HOST: 'runtime',
 };
@@ -164,6 +170,7 @@ for (const k of KNOWN_KEYS) {
 export const SECRET_KEYS = new Set([
   'ANTHROPIC_API_KEY', 'GEMINI_API_KEY', 'OPENAI_API_KEY', 'QWEN_API_KEY',
   'OPENROUTER_API_KEY', 'GITHUB_MODELS_API_KEY', 'HERMES_API_KEY',
+  'FEATHERLESS_API_KEY',
   'DEEPSEEK_API_KEY', 'ZAI_API_KEY', 'MOONSHOT_API_KEY', 'MINIMAX_API_KEY',
   'MISTRAL_API_KEY', 'XAI_API_KEY', 'TOGETHER_API_KEY', 'FIREWORKS_API_KEY',
   'OLLAMA_API_KEY',

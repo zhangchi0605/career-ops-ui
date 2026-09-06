@@ -8,6 +8,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_AR = {
+  'config.featherlessHint': "مفتاح Featherless API. يبقى المفتاح محليًا ويُخفى بعد الحفظ. نقطة نهاية متوافقة مع OpenAI. ⚡ live eval",
+  'config.featherlessBaseUrlHint': "الافتراضي: https://api.featherless.ai/v1. يعمل أيضًا عنوان URL كامل …/chat/completions.",
+  'config.featherlessModelHint': "الافتراضي: zai-org/GLM-5.3-Flash. تستخدم معرّفات النماذج صيغة publisher/model في Featherless.",
   'track.outcome.btn': "النتيجة",
   'track.outcome.record': "تسجيل النتيجة",
   'track.outcome.rejected': "مرفوض",
@@ -184,8 +187,8 @@ window.__I18N_DICT_AR = {
   'config.viewProfile': "عرض الملخص للقراءة فقط ←",
   'config.gotoHealth': "التحقق في الصحة",
   'config.llmProvider': "مزوّد LLM",
-  'config.llmProviderHint': "auto = استخدم أي مفتاح مُعيَّن، مع تفضيل Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = فضّل هذا المزوّد — لكن إن لم يكن مفتاحه مُعيَّنًا فإنه يتراجع إلى أي مزوّد آخر مُهيّأ. فقط عند عدم وجود أي مفتاح مزوّد → التراجع إلى المطالبة اليدوية.",
-  'config.providerModelNote': "career-ops غير مرتبط بواجهة سطر أوامر معيّنة — تشغّله داخل أي CLI للذكاء الاصطناعي (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi)، لكلٍّ تسجيل دخوله. واجهة الويب هذه منفصلة: يعمل تقييمها المباشر ⚡ دون واجهة باستخدام أيٍّ من مفاتيح مزوّديك الـ18 أدناه — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — مرتّبة تلقائيًا، مع الرجوع الاحتياطي عندما لا يملك المزوّد المثبّت مفتاحًا.",
+  'config.llmProviderHint': "auto = استخدم أي مفتاح مُعيَّن، مع تفضيل Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = فضّل هذا المزوّد — لكن إن لم يكن مفتاحه مُعيَّنًا فإنه يتراجع إلى أي مزوّد آخر مُهيّأ. فقط عند عدم وجود أي مفتاح مزوّد → التراجع إلى المطالبة اليدوية.",
+  'config.providerModelNote': "career-ops غير مرتبط بواجهة سطر أوامر معيّنة — تشغّله داخل أي CLI للذكاء الاصطناعي (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi)، لكلٍّ تسجيل دخوله. واجهة الويب هذه منفصلة: يعمل تقييمها المباشر ⚡ دون واجهة باستخدام أيٍّ من مفاتيح مزوّديك الـ19 أدناه — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — مرتّبة تلقائيًا، مع الرجوع الاحتياطي عندما لا يملك المزوّد المثبّت مفتاحًا.",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → مفاتيح API. v1.55.0: يشغّل أيضًا التقييم المباشر لواجهة الويب (الثالث في الترتيب التلقائي، بعد Anthropic وGemini)؛ لا يزال يُقرأ أيضًا بواسطة تدفق Codex/OpenAI CLI الأصلي.",
   'config.anthropicKey': "مفتاح Anthropic API (Claude)",
@@ -563,7 +566,7 @@ window.__I18N_DICT_AR = {
   'scan.consoleReady': "> جاهز. اضغط زر المسح.",
   'scan.noResults': "لا نتائج. شغّل مسحًا أعلاه — ستظهر النتائج هنا عند انتهائه.",
   'app.setupIssue': "مشكلة في الإعداد: ",
-  'onboarding.noKey.title': "لا مفتاح LLM مضبوط — \"⚡ تشغيل مباشر\" في وضع الأمر اليدوي. اضبط أيًا من Anthropic / Gemini / OpenAI / Qwen.",
+  'onboarding.noKey.title': "لا مفتاح LLM مضبوط — \"⚡ تشغيل مباشر\" في وضع الأمر اليدوي. اضبط أيًا من Anthropic / Gemini / OpenAI / Qwen / Featherless.",
   'onboarding.noKey.cta': "ضبط مفتاح ←",
   'onboarding.activeProvider': "تقييم مباشر",
   'cost.estimate': "التكلفة التقديرية",

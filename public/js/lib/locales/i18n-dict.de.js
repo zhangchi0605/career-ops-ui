@@ -9,6 +9,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_DE = {
+  'config.featherlessHint': "Featherless-API-Schlüssel. Der Schlüssel bleibt lokal und wird nach dem Speichern maskiert. OpenAI-kompatibler Endpunkt. ⚡ live eval",
+  'config.featherlessBaseUrlHint': "Standard: https://api.featherless.ai/v1. Eine vollständige …/chat/completions-URL funktioniert ebenfalls.",
+  'config.featherlessModelHint': "Standard: zai-org/GLM-5.3-Flash. Modell-IDs verwenden die Featherless-Notation publisher/model.",
   'track.outcome.btn': "Ergebnis",
   'track.outcome.record': "Ergebnis erfassen",
   'track.outcome.rejected': "Abgelehnt",
@@ -185,8 +188,8 @@ window.__I18N_DICT_DE = {
   'config.viewProfile': "Schreibgeschützte Zusammenfassung anzeigen →",
   'config.gotoHealth': "In Health überprüfen",
   'config.llmProvider': "LLM-Anbieter",
-  'config.llmProviderHint': "auto = verwende den gesetzten Schlüssel, mit Vorzug Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = bevorzuge diesen — ist dessen Schlüssel aber nicht gesetzt, greift er auf jeden anderen konfigurierten Provider zurück. Nur ohne jeglichen Provider-Schlüssel → manueller Prompt-Fallback.",
-  'config.providerModelNote': "career-ops ist CLI-agnostisch — du führst es in einer beliebigen KI-Coding-CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi) aus, jede mit eigenem Login. Diese Web-UI ist separat: ihre ⚡ Live-Bewertung läuft headless mit einem beliebigen deiner 18 Anbieter-Schlüssel unten — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — automatisch geordnet, mit Fallback, wenn der angeheftete Anbieter keinen Schlüssel hat.",
+  'config.llmProviderHint': "auto = verwende den gesetzten Schlüssel, mit Vorzug Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = bevorzuge diesen — ist dessen Schlüssel aber nicht gesetzt, greift er auf jeden anderen konfigurierten Provider zurück. Nur ohne jeglichen Provider-Schlüssel → manueller Prompt-Fallback.",
+  'config.providerModelNote': "career-ops ist CLI-agnostisch — du führst es in einer beliebigen KI-Coding-CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi) aus, jede mit eigenem Login. Diese Web-UI ist separat: ihre ⚡ Live-Bewertung läuft headless mit einem beliebigen deiner 19 Anbieter-Schlüssel unten — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — automatisch geordnet, mit Fallback, wenn der angeheftete Anbieter keinen Schlüssel hat.",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → API-Schlüssel. v1.55.0: führt jetzt auch die web-ui-Live-Bewertung aus (an 3. Stelle der Auto-Reihenfolge, nach Anthropic & Gemini); wird weiterhin auch vom übergeordneten Codex/OpenAI-CLI-Ablauf gelesen.",
   'config.anthropicKey': "Anthropic-API-Schlüssel (Claude)",
@@ -564,7 +567,7 @@ window.__I18N_DICT_DE = {
   'scan.consoleReady': "> bereit. Scan-Schaltfläche drücken.",
   'scan.noResults': "Keine Ergebnisse. Führen Sie oben einen Scan aus — die Ergebnisse erscheinen hier, sobald er fertig ist.",
   'app.setupIssue': "Einrichtungsproblem: ",
-  'onboarding.noKey.title': "Kein LLM-Schlüssel gesetzt — „⚡ Live ausführen“ ist im manuellen Prompt-Modus. Setzen Sie einen von Anthropic / Gemini / OpenAI / Qwen.",
+  'onboarding.noKey.title': "Kein LLM-Schlüssel gesetzt — „⚡ Live ausführen“ ist im manuellen Prompt-Modus. Setzen Sie einen von Anthropic / Gemini / OpenAI / Qwen / Featherless.",
   'onboarding.noKey.cta': "Einen Schlüssel einrichten →",
   'onboarding.activeProvider': "Live-Bewertung",
   'cost.estimate': "Geschätzte Kosten",

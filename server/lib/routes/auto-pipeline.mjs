@@ -34,7 +34,7 @@ import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'node:fs';
 import { PATHS, path as projPath } from '../paths.mjs';
 import { isValidJobUrl, sanitizeJobDescription } from '../security.mjs';
 import { runAnthropic, hasAnthropicKey, hasGeminiKey } from '../anthropic.mjs';
-import { runOpenAI, runQwen, hasOpenAIKey, hasQwenKey } from '../openai.mjs';
+import { runOpenAI, runQwen, runFeatherless, hasOpenAIKey, hasQwenKey, hasFeatherlessKey } from '../openai.mjs';
 import { runNodeScript } from '../runner.mjs';
 import { bundleProjectContext, buildEvaluationPrompt } from '../prompts.mjs';
 import { stripDangerousMarkdown } from '../security.mjs';
@@ -260,10 +260,11 @@ export function registerAutoPipelineRoutes(app) {
         else if (hasGeminiKey()) evalMode = 'gemini';
         else if (hasOpenAIKey()) evalMode = 'openai';
         else if (hasQwenKey()) evalMode = 'qwen';
+        else if (hasFeatherlessKey()) evalMode = 'featherless';
         else evalMode = 'manual';
       }
 
-      if (evalMode === 'anthropic' || evalMode === 'openai' || evalMode === 'qwen') {
+      if (evalMode === 'anthropic' || evalMode === 'openai' || evalMode === 'qwen' || evalMode === 'featherless') {
         const ctx = bundleProjectContext({ modeSlugs: ['_shared', 'oferta'] });
         const full = ctx + promptText;
         if (full.length > PROMPT_SIZE_SOFT_CAP) {
@@ -272,6 +273,7 @@ export function registerAutoPipelineRoutes(app) {
         }
         const runFn = evalMode === 'openai' ? runOpenAI
           : evalMode === 'qwen' ? runQwen
+            : evalMode === 'featherless' ? runFeatherless
             : runAnthropic;
         const r = await runFn(full, { maxTokens: 8192, timeoutMs: EVAL_TIMEOUT_MS });
         if (r.error) {

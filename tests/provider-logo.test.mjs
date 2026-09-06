@@ -31,7 +31,7 @@ test('MARKS covers every provider slug in LLM_PROVIDERS (+ the claude alias)', (
 test('KEY_SLUG maps each provider API-key / enabler env var to a slug', () => {
   for (const key of ['ANTHROPIC_API_KEY', 'GEMINI_API_KEY', 'OPENAI_API_KEY', 'QWEN_API_KEY',
     'OPENROUTER_API_KEY', 'GITHUB_MODELS_API_KEY', 'HERMES_API_KEY', 'DEEPSEEK_API_KEY',
-    'ZAI_API_KEY', 'MOONSHOT_API_KEY', 'MINIMAX_API_KEY', 'MISTRAL_API_KEY', 'XAI_API_KEY',
+    'FEATHERLESS_API_KEY', 'ZAI_API_KEY', 'MOONSHOT_API_KEY', 'MINIMAX_API_KEY', 'MISTRAL_API_KEY', 'XAI_API_KEY',
     'TOGETHER_API_KEY', 'FIREWORKS_API_KEY', 'OLLAMA_BASE_URL']) {
     assert.match(SRC, new RegExp(`${key}:\\s*'`), `KEY_SLUG missing ${key}`);
   }

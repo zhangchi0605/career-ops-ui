@@ -9,6 +9,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_HI = {
+  'config.featherlessHint': "Featherless API key। कुंजी स्थानीय रहती है और सहेजने के बाद छिपा दी जाती है। OpenAI-संगत endpoint। ⚡ live eval",
+  'config.featherlessBaseUrlHint': "डिफ़ॉल्ट: https://api.featherless.ai/v1। पूरा …/chat/completions URL भी काम करता है।",
+  'config.featherlessModelHint': "डिफ़ॉल्ट: zai-org/GLM-5.3-Flash। मॉडल ID Featherless publisher/model notation का उपयोग करते हैं।",
   'track.outcome.btn': "परिणाम",
   'track.outcome.record': "परिणाम दर्ज करें",
   'track.outcome.rejected': "अस्वीकृत",
@@ -185,8 +188,8 @@ window.__I18N_DICT_HI = {
   'config.viewProfile': "रीड-ओनली सारांश देखें →",
   'config.gotoHealth': "Health पर सत्यापित करें",
   'config.llmProvider': "LLM प्रोवाइडर",
-  'config.llmProviderHint': "auto = जो कुंजी सेट हो उसका उपयोग करें, Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark को प्राथमिकता देते हुए। claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = उसे प्राथमिकता दें — पर यदि उसकी कुंजी सेट नहीं है तो यह आपके किसी अन्य कॉन्फ़िगर किए प्रदाता पर वापस चला जाता है। केवल किसी भी प्रदाता कुंजी के बिना → मैनुअल प्रॉम्प्ट पर वापसी।",
-  'config.providerModelNote': "career-ops CLI-अज्ञेय है — आप इसे किसी भी AI कोडिंग CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi) के भीतर चलाते हैं, हर एक का अपना लॉगिन। यह वेब UI अलग है: इसका ⚡ लाइव मूल्यांकन नीचे दी गई आपकी 18 प्रदाता कुंजियों में से किसी एक के साथ हेडलेस चलता है — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — स्वतः क्रमबद्ध, और पिन किए गए प्रदाता के पास कुंजी न हो तो फ़ॉलबैक।",
+  'config.llmProviderHint': "auto = जो कुंजी सेट हो उसका उपयोग करें, Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark को प्राथमिकता देते हुए। claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = उसे प्राथमिकता दें — पर यदि उसकी कुंजी सेट नहीं है तो यह आपके किसी अन्य कॉन्फ़िगर किए प्रदाता पर वापस चला जाता है। केवल किसी भी प्रदाता कुंजी के बिना → मैनुअल प्रॉम्प्ट पर वापसी।",
+  'config.providerModelNote': "career-ops CLI-अज्ञेय है — आप इसे किसी भी AI कोडिंग CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi) के भीतर चलाते हैं, हर एक का अपना लॉगिन। यह वेब UI अलग है: इसका ⚡ लाइव मूल्यांकन नीचे दी गई आपकी 19 प्रदाता कुंजियों में से किसी एक के साथ हेडलेस चलता है — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — स्वतः क्रमबद्ध, और पिन किए गए प्रदाता के पास कुंजी न हो तो फ़ॉलबैक।",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → API keys। v1.55.0: web-ui लाइव इवैल भी चलाता है (auto क्रम में तीसरा, Anthropic व Gemini के बाद); पैरेंट Codex/OpenAI CLI फ़्लो द्वारा भी पढ़ा जाता है।",
   'config.anthropicKey': "Anthropic API की (Claude)",
@@ -566,7 +569,7 @@ window.__I18N_DICT_HI = {
   'scan.consoleReady': "> तैयार। स्कैन बटन दबाएँ।",
   'scan.noResults': "कोई परिणाम नहीं। ऊपर स्कैन चलाएँ — पूरा होते ही परिणाम यहाँ दिखेंगे।",
   'app.setupIssue': "सेटअप समस्या: ",
-  'onboarding.noKey.title': "कोई LLM कुंजी सेट नहीं है — “⚡ लाइव चलाएँ” मैनुअल-प्रॉम्प्ट मोड में है। Anthropic / Gemini / OpenAI / Qwen में से कोई एक सेट करें।",
+  'onboarding.noKey.title': "कोई LLM कुंजी सेट नहीं है — “⚡ लाइव चलाएँ” मैनुअल-प्रॉम्प्ट मोड में है। Anthropic / Gemini / OpenAI / Qwen / Featherless में से कोई एक सेट करें।",
   'onboarding.noKey.cta': "कुंजी सेट करें →",
   'onboarding.activeProvider': "लाइव मूल्यांकन",
   'cost.estimate': "अनुमानित लागत",

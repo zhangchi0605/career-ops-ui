@@ -113,7 +113,7 @@ I18n.onChange(() => {
     } else {
       host.classList.add('onboarding-ok');
       // v1.219.0 — the friendly name resolves via the shared ProviderStatus
-      // (all 18 providers), not a stale 4-entry map that showed a raw slug for
+      // (all 19 providers), not a stale 4-entry map that showed a raw slug for
       // the newer ones; the chip carries the provider's brand monogram.
       const name = (window.ProviderStatus && window.ProviderStatus.label(st.activeProvider)) || st.activeProvider || '';
       const label = I18n.t('onboarding.activeProvider', 'Live eval');

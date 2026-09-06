@@ -9,6 +9,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_KO = {
+  'config.featherlessHint': "Featherless API 키입니다. 키는 로컬에만 저장되며 저장 후 마스킹됩니다. OpenAI 호환 엔드포인트입니다. ⚡ live eval",
+  'config.featherlessBaseUrlHint': "기본값: https://api.featherless.ai/v1. 전체 …/chat/completions URL도 사용할 수 있습니다.",
+  'config.featherlessModelHint': "기본값: zai-org/GLM-5.3-Flash. 모델 ID는 Featherless publisher/model 형식을 사용합니다.",
   'track.outcome.btn': "결과",
   'track.outcome.record': "결과 기록",
   'track.outcome.rejected': "불합격",
@@ -185,8 +188,8 @@ window.__I18N_DICT_KO = {
   'config.viewProfile': "읽기 전용 요약 보기 →",
   'config.gotoHealth': "Health 에서 확인",
   'config.llmProvider': "LLM 공급자",
-  'config.llmProviderHint': "auto = 설정된 키를 사용하며 Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark 순으로 우선합니다. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = 해당 제공자를 우선하되, 그 키가 없으면 설정된 다른 제공자로 대체합니다. 제공자 키가 전혀 없을 때만 → 수동 프롬프트로 대체.",
-  'config.providerModelNote': "career-ops는 CLI에 구애받지 않습니다 — 아무 AI 코딩 CLI(Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi) 안에서 실행하며 각기 자체 로그인을 씁니다. 이 웹 UI는 별개입니다: ⚡ 라이브 평가는 아래의 18개 제공자 키 중 아무거나로 헤드리스 실행됩니다 — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — 자동 정렬되며, 고정된 제공자에 키가 없으면 폴백합니다.",
+  'config.llmProviderHint': "auto = 설정된 키를 사용하며 Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark 순으로 우선합니다. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = 해당 제공자를 우선하되, 그 키가 없으면 설정된 다른 제공자로 대체합니다. 제공자 키가 전혀 없을 때만 → 수동 프롬프트로 대체.",
+  'config.providerModelNote': "career-ops는 CLI에 구애받지 않습니다 — 아무 AI 코딩 CLI(Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi) 안에서 실행하며 각기 자체 로그인을 씁니다. 이 웹 UI는 별개입니다: ⚡ 라이브 평가는 아래의 19개 제공자 키 중 아무거나로 헤드리스 실행됩니다 — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — 자동 정렬되며, 고정된 제공자에 키가 없으면 폴백합니다.",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → API keys. v1.55.0: web-ui 라이브 평가도 실행(auto 순서에서 Anthropic·Gemini 다음 3번째); 상위 Codex/OpenAI CLI 흐름에서도 계속 사용.",
   'config.anthropicKey': "Anthropic API 키 (Claude)",
@@ -564,7 +567,7 @@ window.__I18N_DICT_KO = {
   'scan.consoleReady': "> 준비. scan 버튼 누르세요.",
   'scan.noResults': "결과 없음. 위에서 스캔을 실행하세요 — 완료 시 여기에 표시됩니다.",
   'app.setupIssue': "설정 문제: ",
-  'onboarding.noKey.title': "LLM 키 없음 — “⚡ 라이브 실행”이 수동 프롬프트 모드입니다. Anthropic / Gemini / OpenAI / Qwen 중 아무거나 설정하세요.",
+  'onboarding.noKey.title': "LLM 키 없음 — “⚡ 라이브 실행”이 수동 프롬프트 모드입니다. Anthropic / Gemini / OpenAI / Qwen / Featherless 중 아무거나 설정하세요.",
   'onboarding.noKey.cta': "키 설정하기 →",
   'onboarding.activeProvider': "라이브 평가",
   'cost.estimate': "예상 비용",

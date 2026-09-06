@@ -29,6 +29,7 @@ import { runOpenAI, runQwen, runOpenRouter, runGitHubModels, runHermes, hasOpenA
 import { runDeepSeek, runZai, runKimi, runMiniMax, runMistral, runGrok, runTogether, runFireworks, runOllama, hasDeepSeekKey, hasZaiKey, hasKimiKey, hasMiniMaxKey, hasMistralKey, hasGrokKey, hasTogetherKey, hasFireworksKey, hasOllamaKey } from '../openai.mjs';
 // v1.217.0 — Ark pair (BytePlus + Volcengine), OpenAI-compatible Chat Completions.
 import { runArk, runArkCn, hasArkKey, hasArkCnKey } from '../openai.mjs';
+import { runFeatherless, hasFeatherlessKey } from '../openai.mjs';
 import { providerOrder, AUTO_ORDER } from '../env-config.mjs';
 import { recordUsage } from '../llm-usage.mjs';
 import { sanitizeJobDescription, sanitizePathName } from '../security.mjs';
@@ -60,6 +61,7 @@ function _hasKeyFor(p) {
     || (p === 'openrouter' && hasOpenRouterKey())
     || (p === 'github' && hasGitHubModelsKey())
     || (p === 'hermes' && hasHermesKey())
+    || (p === 'featherless' && hasFeatherlessKey())
     || (p === 'deepseek' && hasDeepSeekKey())
     || (p === 'zai' && hasZaiKey())
     || (p === 'kimi' && hasKimiKey())
@@ -86,6 +88,7 @@ function _provGate() {
     wantOpenAI: o.includes('openai'), wantQwen: o.includes('qwen'),
     wantOpenRouter: o.includes('openrouter'), wantGitHub: o.includes('github'),
     wantHermes: o.includes('hermes'),
+    wantFeatherless: o.includes('featherless'),
     wantDeepSeek: o.includes('deepseek'), wantZai: o.includes('zai'), wantKimi: o.includes('kimi'),
     wantMiniMax: o.includes('minimax'), wantMistral: o.includes('mistral'), wantGrok: o.includes('grok'),
     wantTogether: o.includes('together'), wantFireworks: o.includes('fireworks'), wantOllama: o.includes('ollama'),
@@ -113,6 +116,7 @@ function _tailProvider() {
   // v1.151.0 — Hermes (local OpenAI-compatible API Server) is last: you opt in
   // by running `hermes gateway`, so it never silently re-routes an existing setup.
   if (g.wantHermes && hasHermesKey()) return { mode: 'hermes', run: runHermes };
+  if (g.wantFeatherless && hasFeatherlessKey()) return { mode: 'featherless', run: runFeatherless };
   // v1.216.0 — the extended OpenAI-compatible roster. Each is opt-in via its own
   // key (ollama via OLLAMA_BASE_URL), so an existing setup is never re-routed.
   if (g.wantDeepSeek && hasDeepSeekKey()) return { mode: 'deepseek', run: runDeepSeek };

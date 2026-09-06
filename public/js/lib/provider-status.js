@@ -15,7 +15,7 @@
 (function () {
   const LABELS = {
     anthropic: 'Anthropic', gemini: 'Gemini', openai: 'OpenAI', qwen: 'Qwen',
-    openrouter: 'OpenRouter', github: 'GitHub Models', hermes: 'Hermes',
+    openrouter: 'OpenRouter', github: 'GitHub Models', hermes: 'Hermes', featherless: 'Featherless',
     // v1.216.0 — extended OpenAI-compatible roster.
     deepseek: 'DeepSeek', zai: 'GLM (Z.ai)', kimi: 'Kimi (Moonshot)', minimax: 'MiniMax',
     mistral: 'Mistral', grok: 'Grok (xAI)', together: 'Together', fireworks: 'Fireworks', ollama: 'Ollama',

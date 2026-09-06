@@ -22,6 +22,7 @@ let runOpenRouter, hasOpenRouterKey, fetchOpenRouterModels, OPENROUTER_FALLBACK_
 let compatChatUrl, runDeepSeek, runZai, runKimi, runGrok, runTogether, runOllama, hasOllamaKey, hasGrokKey;
 let runArk, runArkCn, hasArkKey, hasArkCnKey;
 let runMiniMax, runMistral, runFireworks;
+let runFeatherless, hasFeatherlessKey;
 let ROOT, ENV_FILE;
 const savedRoot = process.env.CAREER_OPS_ROOT;
 
@@ -37,7 +38,7 @@ before(async () => {
      compatChatUrl, runDeepSeek, runZai, runKimi, runGrok, runTogether, runOllama,
      hasOllamaKey, hasGrokKey,
      runArk, runArkCn, hasArkKey, hasArkCnKey,
-     runMiniMax, runMistral, runFireworks } =
+     runMiniMax, runMistral, runFireworks, runFeatherless, hasFeatherlessKey } =
     await import('../server/lib/openai.mjs'));
 });
 
@@ -476,6 +477,7 @@ test('hasArkKey / hasArkCnKey gate on their own env (ARK_API_KEY / ARK_CN_API_KE
 // provider run<X> has an endpoint+default-model+Bearer assertion.
 test('run<Provider> wrappers post to the expected endpoint with their default model', async () => {
   const CASES = [
+    { fn: () => runFeatherless, url: 'https://api.featherless.ai/v1/chat/completions', model: 'zai-org/GLM-5.3-Flash' },
     { fn: () => runKimi,      url: 'https://api.moonshot.ai/v1/chat/completions',      model: 'kimi-k2-0711-preview' },
     { fn: () => runMiniMax,   url: 'https://api.minimax.io/v1/chat/completions',       model: 'MiniMax-Text-01' },
     { fn: () => runMistral,   url: 'https://api.mistral.ai/v1/chat/completions',       model: 'mistral-large-latest' },
@@ -493,4 +495,12 @@ test('run<Provider> wrappers post to the expected endpoint with their default mo
     assert.equal(sentModel, c.model, `default model for ${c.url}`);
     assert.equal(sentAuth, 'Bearer provider-canary-000001');
   }
+});
+
+test('hasFeatherlessKey: gates on FEATHERLESS_API_KEY', () => {
+  clearParentEnv();
+  assert.equal(hasFeatherlessKey(), false);
+  writeFileSync(ENV_FILE, 'FEATHERLESS_API_KEY=featherless-canary-000001\n');
+  assert.equal(hasFeatherlessKey(), true);
+  clearParentEnv();
 });

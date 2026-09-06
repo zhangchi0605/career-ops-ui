@@ -96,6 +96,12 @@
     'accounts/fireworks/models/mixtral-8x22b-instruct-hf',
   ];
   const OLLAMA_MODELS = ['llama3.2', 'llama3.3', 'llama3.1', 'qwen2.5', 'deepseek-r1', 'mistral', 'gemma3'];
+  // Featherless (OpenAI-compatible hosted inference). The requested GLM model
+  // is first so it is selected by default after the user chooses this provider.
+  const FEATHERLESS_MODELS = [
+    'zai-org/GLM-5.3-Flash',
+    'Qwen/Qwen2.5-7B-Instruct',
+  ];
   // v1.217.0 — Ark (ByteDance Doubao). Model ids are the vendor's model names or
   // an endpoint id (`ep-…`); the defaults are common Doubao names — override with yours.
   const ARK_MODELS = ['doubao-pro-32k', 'doubao-pro-4k', 'doubao-1.5-pro-32k', 'doubao-lite-32k'];
@@ -104,10 +110,10 @@
     {
       // v1.39.0 (WS8.2) — explicit provider preference.
       key: 'LLM_PROVIDER', secret: false, kind: 'select',
-      options: ['auto', 'claude', 'gemini', 'openai', 'qwen', 'openrouter', 'github', 'hermes', 'deepseek', 'zai', 'kimi', 'minimax', 'mistral', 'grok', 'together', 'fireworks', 'ollama', 'ark', 'arkcn'], defaultValue: 'auto',
+      options: ['auto', 'claude', 'gemini', 'openai', 'qwen', 'openrouter', 'github', 'hermes', 'featherless', 'deepseek', 'zai', 'kimi', 'minimax', 'mistral', 'grok', 'together', 'fireworks', 'ollama', 'ark', 'arkcn'], defaultValue: 'auto',
       labelKey: 'config.llmProvider', label: 'LLM_PROVIDER',
       hintKey: 'config.llmProviderHint',
-      hintFallback: "auto = use whichever key is set, preferring Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi → MiniMax → Mistral → Grok → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. Pinning one prefers it — but if its key isn't set it falls back to any other provider you have configured. Only with no provider key at all → manual-prompt fallback.",
+      hintFallback: "auto = use whichever key is set, preferring Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi → MiniMax → Mistral → Grok → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. Pinning one prefers it — but if its key isn't set it falls back to any other provider you have configured. Only with no provider key at all → manual-prompt fallback.",
     },
     {
       key: 'ANTHROPIC_API_KEY', secret: true,
@@ -220,6 +226,28 @@
       labelKey: 'config.hermesModel', label: 'HERMES_MODEL',
       hintKey: 'config.hermesModelHint',
       hintFallback: 'Default: hermes-agent. The Hermes profile / model id to send (Hermes routes it to whatever provider you configured inside it).',
+    },
+    {
+      // Featherless (v1.231.0) — hosted OpenAI-compatible inference. The key
+      // is entered only in this password field; the server masks it on reads
+      // and stores it in the parent project's local .env.
+      key: 'FEATHERLESS_API_KEY', secret: true,
+      label: 'FEATHERLESS_API_KEY',
+      hintKey: 'config.featherlessHint',
+      hintFallback: 'Featherless API key. The key stays local and is masked after saving. OpenAI-compatible endpoint.',
+    },
+    {
+      key: 'FEATHERLESS_BASE_URL', secret: false,
+      label: 'FEATHERLESS_BASE_URL', defaultValue: 'https://api.featherless.ai/v1',
+      hintKey: 'config.featherlessBaseUrlHint',
+      hintFallback: 'Default: https://api.featherless.ai/v1. A full …/chat/completions URL also works.',
+    },
+    {
+      key: 'FEATHERLESS_MODEL', secret: false, kind: 'select',
+      options: FEATHERLESS_MODELS, defaultValue: 'zai-org/GLM-5.3-Flash',
+      label: 'FEATHERLESS_MODEL',
+      hintKey: 'config.featherlessModelHint',
+      hintFallback: 'Default: zai-org/GLM-5.3-Flash. Model ids use Featherless publisher/model notation.',
     },
     // ─── v1.216.0 — extended OpenAI-compatible provider roster ───────────
     // Each is an OpenAI-compatible /v1/chat/completions endpoint reached

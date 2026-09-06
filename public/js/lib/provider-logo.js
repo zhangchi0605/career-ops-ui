@@ -32,6 +32,7 @@ window.ProviderLogo = (function () {
     openrouter: { bg: '#6467f2', tx: 'OR' },  // OpenRouter
     github:     { bg: '#24292f', tx: 'GH' },  // GitHub ink
     hermes:     { bg: '#7c3aed', tx: 'H' },   // Nous Research violet (no public icon → monogram)
+    featherless:{ bg: '#0f766e', tx: 'F' },   // Featherless (no public icon → monogram)
     deepseek:   { bg: '#4d6bfe', tx: 'DS' },  // DeepSeek blue
     zai:        { bg: '#2f6df6', tx: 'GLM' }, // GLM / Z.ai (no public icon → monogram)
     kimi:       { bg: '#111827', tx: 'K' },   // Kimi / Moonshot dark
@@ -68,7 +69,7 @@ window.ProviderLogo = (function () {
   var KEY_SLUG = {
     ANTHROPIC_API_KEY: 'anthropic', GEMINI_API_KEY: 'gemini', OPENAI_API_KEY: 'openai',
     QWEN_API_KEY: 'qwen', OPENROUTER_API_KEY: 'openrouter', GITHUB_MODELS_API_KEY: 'github',
-    HERMES_API_KEY: 'hermes', DEEPSEEK_API_KEY: 'deepseek', ZAI_API_KEY: 'zai',
+    HERMES_API_KEY: 'hermes', FEATHERLESS_API_KEY: 'featherless', DEEPSEEK_API_KEY: 'deepseek', ZAI_API_KEY: 'zai',
     MOONSHOT_API_KEY: 'kimi', MINIMAX_API_KEY: 'minimax', MISTRAL_API_KEY: 'mistral',
     XAI_API_KEY: 'grok', TOGETHER_API_KEY: 'together', FIREWORKS_API_KEY: 'fireworks',
     OLLAMA_BASE_URL: 'ollama', ARK_API_KEY: 'ark', ARK_CN_API_KEY: 'arkcn',

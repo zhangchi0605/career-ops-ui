@@ -9,6 +9,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_TR = {
+  'config.featherlessHint': "Featherless API anahtarı. Anahtar yerel kalır ve kaydedildikten sonra maskelenir. OpenAI uyumlu uç nokta. ⚡ live eval",
+  'config.featherlessBaseUrlHint': "Varsayılan: https://api.featherless.ai/v1. Tam bir …/chat/completions URL'si de çalışır.",
+  'config.featherlessModelHint': "Varsayılan: zai-org/GLM-5.3-Flash. Model kimlikleri Featherless publisher/model gösterimini kullanır.",
   'track.outcome.btn': "Sonuç",
   'track.outcome.record': "Sonucu kaydet",
   'track.outcome.rejected': "Reddedildi",
@@ -185,8 +188,8 @@ window.__I18N_DICT_TR = {
   'config.viewProfile': "Salt okunur özeti görüntüle →",
   'config.gotoHealth': "Sağlık'ta doğrula",
   'config.llmProvider': "LLM sağlayıcı",
-  'config.llmProviderHint': "auto = ayarlı olan anahtarı kullanır, Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark sırasını tercih eder. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = onu tercih et — ama anahtarı ayarlı değilse, yapılandırdığın başka bir sağlayıcıya geri düşer. Yalnızca hiç sağlayıcı anahtarı yoksa → manuel istem moduna döner.",
-  'config.providerModelNote': "career-ops CLI'den bağımsızdır — onu herhangi bir yapay zekâ kodlama CLI'sinin (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi) içinde çalıştırırsın, her birinin kendi oturumu vardır. Bu web arayüzü ayrıdır: ⚡ canlı değerlendirmesi, aşağıdaki 18 sağlayıcı anahtarından herhangi biriyle başsız çalışır — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — otomatik sıralanır ve sabitlenen sağlayıcının anahtarı yoksa yedeğe döner.",
+  'config.llmProviderHint': "auto = ayarlı olan anahtarı kullanır, Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark sırasını tercih eder. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = onu tercih et — ama anahtarı ayarlı değilse, yapılandırdığın başka bir sağlayıcıya geri düşer. Yalnızca hiç sağlayıcı anahtarı yoksa → manuel istem moduna döner.",
+  'config.providerModelNote': "career-ops CLI'den bağımsızdır — onu herhangi bir yapay zekâ kodlama CLI'sinin (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi) içinde çalıştırırsın, her birinin kendi oturumu vardır. Bu web arayüzü ayrıdır: ⚡ canlı değerlendirmesi, aşağıdaki 19 sağlayıcı anahtarından herhangi biriyle başsız çalışır — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — otomatik sıralanır ve sabitlenen sağlayıcının anahtarı yoksa yedeğe döner.",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → API keys. v1.55.0: web-ui canlı değerlendirmesini de çalıştırır (otomatik sırada 3.; Anthropic ve Gemini'den sonra); üst Codex/OpenAI CLI akışı tarafından da okunur.",
   'config.anthropicKey': "Anthropic API anahtarı (Claude)",
@@ -564,7 +567,7 @@ window.__I18N_DICT_TR = {
   'scan.consoleReady': "> hazır. tara düğmesine basın.",
   'scan.noResults': "Sonuç yok. Yukarıdan bir tarama çalıştırın — tamamlandığında sonuçlar burada görünecek.",
   'app.setupIssue': "Kurulum sorunu: ",
-  'onboarding.noKey.title': "LLM anahtarı ayarlı değil — “⚡ Canlı çalıştır” manuel-prompt modunda. Anthropic / Gemini / OpenAI / Qwen'den herhangi birini ayarlayın.",
+  'onboarding.noKey.title': "LLM anahtarı ayarlı değil — “⚡ Canlı çalıştır” manuel-prompt modunda. Anthropic / Gemini / OpenAI / Qwen / Featherless'den herhangi birini ayarlayın.",
   'onboarding.noKey.cta': "Bir anahtar ayarla →",
   'onboarding.activeProvider': "Canlı değerlendirme",
   'cost.estimate': "Tahmini maliyet",

@@ -9,6 +9,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_EN = {
+  'config.featherlessHint': "Featherless API key. The key stays local and is masked after saving. OpenAI-compatible endpoint. ⚡ live eval",
+  'config.featherlessBaseUrlHint': "Default: https://api.featherless.ai/v1. A full …/chat/completions URL also works.",
+  'config.featherlessModelHint': "Default: zai-org/GLM-5.3-Flash. Model ids use Featherless publisher/model notation.",
   'track.outcome.btn': "Outcome",
   'track.outcome.record': "Record outcome",
   'track.outcome.rejected': "Rejected",
@@ -185,8 +188,8 @@ window.__I18N_DICT_EN = {
   'config.viewProfile': "View read-only summary →",
   'config.gotoHealth': "Verify on Health",
   'config.llmProvider': "LLM provider",
-  'config.llmProviderHint': "auto = use whichever key is set, preferring Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = prefer that one — but if its key isn't set it falls back to any other provider you have configured. Only with no provider key at all → manual-prompt fallback.",
-  'config.providerModelNote': "career-ops is CLI-agnostic — you run it inside any AI coding CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi), each with its own login. This web UI is separate: its ⚡ live eval runs headless on any one of your 18 provider keys below — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — auto-ordered, with fallback when a pinned provider has no key set.",
+  'config.llmProviderHint': "auto = use whichever key is set, preferring Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark. claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = prefer that one — but if its key isn't set it falls back to any other provider you have configured. Only with no provider key at all → manual-prompt fallback.",
+  'config.providerModelNote': "career-ops is CLI-agnostic — you run it inside any AI coding CLI (Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi), each with its own login. This web UI is separate: its ⚡ live eval runs headless on any one of your 19 provider keys below — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — auto-ordered, with fallback when a pinned provider has no key set.",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → API keys. v1.55.0: also runs the web-ui live eval (3rd in the auto order, after Anthropic & Gemini); still read by the parent Codex/OpenAI CLI flow too.",
   'config.anthropicKey': "Anthropic API key (Claude)",
@@ -564,7 +567,7 @@ window.__I18N_DICT_EN = {
   'scan.consoleReady': "> ready. press scan button.",
   'scan.noResults': "No results. Run a scan above — results will appear here once it finishes.",
   'app.setupIssue': "Setup issue: ",
-  'onboarding.noKey.title': "No LLM key set — “⚡ Run live” is in manual-prompt mode. Set any one of Anthropic / Gemini / OpenAI / Qwen.",
+  'onboarding.noKey.title': "No LLM key set — “⚡ Run live” is in manual-prompt mode. Set any one of Anthropic / Gemini / OpenAI / Qwen / Featherless.",
   'onboarding.noKey.cta': "Set up a key →",
   'onboarding.activeProvider': "Live eval",
   'cost.estimate': "Estimated cost",

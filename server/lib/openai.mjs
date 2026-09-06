@@ -241,6 +241,7 @@ export function compatChatUrl(base, fallback) {
 
 const DEEPSEEK_URL = 'https://api.deepseek.com/v1/chat/completions';
 const ZAI_BASE_DEFAULT = 'https://api.z.ai/api/paas/v4';       // GLM (Z.ai); CN: https://open.bigmodel.cn/api/paas/v4
+const FEATHERLESS_BASE_DEFAULT = 'https://api.featherless.ai/v1';
 const MOONSHOT_BASE_DEFAULT = 'https://api.moonshot.ai/v1';    // Kimi (Moonshot); CN: https://api.moonshot.cn/v1
 const MINIMAX_URL = 'https://api.minimax.io/v1/chat/completions';
 const MISTRAL_URL = 'https://api.mistral.ai/v1/chat/completions';
@@ -270,6 +271,17 @@ export async function runZai(prompt, opts = {}) {
   });
 }
 export function hasZaiKey() { return isUsableKey(envKey('ZAI_API_KEY')); }
+
+/** Featherless — OpenAI-compatible inference for hosted models. */
+export async function runFeatherless(prompt, opts = {}) {
+  return runOpenAICompatible(prompt, {
+    url: opts.url || compatChatUrl(envKey('FEATHERLESS_BASE_URL'), FEATHERLESS_BASE_DEFAULT),
+    apiKey: opts.apiKey || envKey('FEATHERLESS_API_KEY'),
+    model: opts.model || envKey('FEATHERLESS_MODEL') || 'zai-org/GLM-5.3-Flash',
+    label: 'Featherless', ...opts,
+  });
+}
+export function hasFeatherlessKey() { return isUsableKey(envKey('FEATHERLESS_API_KEY')); }
 
 /** Kimi (Moonshot) — OpenAI-compatible; base override for the CN endpoint. */
 export async function runKimi(prompt, opts = {}) {

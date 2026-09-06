@@ -29,6 +29,7 @@ import { hasOpenAIKey, hasQwenKey, hasOpenRouterKey, hasGitHubModelsKey, hasHerm
 import { hasDeepSeekKey, hasZaiKey, hasKimiKey, hasMiniMaxKey, hasMistralKey, hasGrokKey, hasTogetherKey, hasFireworksKey, hasOllamaKey } from '../openai.mjs';
 // v1.217.0 — Ark pair.
 import { hasArkKey, hasArkCnKey } from '../openai.mjs';
+import { hasFeatherlessKey } from '../openai.mjs';
 
 /**
  * The version of the code THIS PROCESS IS RUNNING, read once at module load.
@@ -114,6 +115,7 @@ export function registerHealthRoutes(app) {
     // v1.151.0 — Hermes (Nous Research's local OpenAI-compatible API Server) is
     // the 7th live-eval provider; same isUsableKey gate + "manual mode" wording.
     checks.push({ name: 'HERMES_API_KEY', required: false, ok: hermesSet, value: hermesSet ? 'set' : 'unset (manual mode)' });
+    checks.push({ name: 'FEATHERLESS_API_KEY', required: false, ok: hasFeatherlessKey(), value: hasFeatherlessKey() ? 'set' : 'unset (manual mode)' });
     // v1.216.0 — the extended OpenAI-compatible roster gets one optional row
     // each, same isUsableKey gate + "manual mode" wording. Ollama is opt-in via
     // OLLAMA_BASE_URL (local, keyless), so its row names that var.
@@ -196,6 +198,7 @@ export function registerHealthRoutes(app) {
       ['openrouter', hasOpenRouterKey()],
       ['github', hasGitHubModelsKey()],
       ['hermes', hasHermesKey()],
+      ['featherless', hasFeatherlessKey()],
       // v1.216.0 — extended OpenAI-compatible roster.
       ['deepseek', hasDeepSeekKey()],
       ['zai', hasZaiKey()],
@@ -215,6 +218,7 @@ export function registerHealthRoutes(app) {
       openai: 'OPENAI_MODEL', qwen: 'QWEN_MODEL',
       openrouter: 'OPENROUTER_MODEL', github: 'GITHUB_MODELS_MODEL',
       hermes: 'HERMES_MODEL',
+      featherless: 'FEATHERLESS_MODEL',
       deepseek: 'DEEPSEEK_MODEL', zai: 'ZAI_MODEL', kimi: 'MOONSHOT_MODEL',
       minimax: 'MINIMAX_MODEL', mistral: 'MISTRAL_MODEL', grok: 'XAI_MODEL',
       together: 'TOGETHER_MODEL', fireworks: 'FIREWORKS_MODEL', ollama: 'OLLAMA_MODEL',

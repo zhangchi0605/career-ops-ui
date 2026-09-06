@@ -433,14 +433,14 @@ Router.register('config', async () => {
     }
     lastGoodSt = st;
     apiSummary.hidden = false;
-    // v1.218.0 — friendly label + total from ProviderStatus (all 18 providers),
+    // v1.218.0 — friendly label + total from ProviderStatus (all 19 providers),
     // not a stale 5-entry map or a hardcoded "/ 7".
     const active = st.activeProvider
       ? ((window.ProviderStatus && window.ProviderStatus.label(st.activeProvider)) || st.activeProvider)
       : t('dash.provider.manual', 'Manual prompt mode');
     const count = Array.isArray(st.keysConfigured) ? st.keysConfigured.length : 0;
     const total = (window.ProviderStatus && window.ProviderStatus.LABELS)
-      ? Object.keys(window.ProviderStatus.LABELS).length : 18;
+      ? Object.keys(window.ProviderStatus.LABELS).length : 19;
     const activeTile = (st.activeProvider && window.ProviderLogo && typeof window.ProviderLogo.el === 'function')
       ? window.ProviderLogo.el(st.activeProvider, 14) : null;
     const activeLabel = c('span', { className: 'api-keys__active', style: { display: 'inline-flex', alignItems: 'center', gap: '5px' } }, [

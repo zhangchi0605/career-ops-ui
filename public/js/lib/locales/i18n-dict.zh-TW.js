@@ -9,6 +9,9 @@
  * Structured-data fixture: exempt from the 400-LOC file-size rule.
  */
 window.__I18N_DICT_ZH_TW = {
+  'config.featherlessHint': "Featherless API 金鑰。金鑰只保存在本機，儲存後會被隱藏。相容 OpenAI 的端點。 ⚡ live eval",
+  'config.featherlessBaseUrlHint': "預設: https://api.featherless.ai/v1。也支援完整的 …/chat/completions URL。",
+  'config.featherlessModelHint': "預設: zai-org/GLM-5.3-Flash。模型 ID 使用 Featherless 的 publisher/model 格式。",
   'track.outcome.btn': "結果",
   'track.outcome.record': "記錄結果",
   'track.outcome.rejected': "被拒",
@@ -185,8 +188,8 @@ window.__I18N_DICT_ZH_TW = {
   'config.viewProfile': "檢視唯讀摘要 →",
   'config.gotoHealth': "在 Health 驗證",
   'config.llmProvider': "LLM 供應方",
-  'config.llmProviderHint': "auto = 使用已設定的任一金鑰,按 Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark 優先。claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = 優先該供應方 —— 但若其金鑰未設定,則回退到你已設定的任一其他供應方。僅當完全沒有供應方金鑰時 → 回退到手動提示詞。",
-  'config.providerModelNote': "career-ops 與 CLI 無關 — 你在任意 AI 編碼 CLI(Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi)中執行它,各自有自己的登入。此 Web UI 是獨立的:其 ⚡ 即時評估以無頭方式執行,使用下方18 個供應方金鑰中的任意一個 — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — 自動排序,當固定的供應方沒有金鑰時回退。",
+  'config.llmProviderHint': "auto = 使用已設定的任一金鑰,按 Anthropic → Gemini → OpenAI → Qwen → OpenRouter → GitHub Models → Hermes → Featherless → DeepSeek → GLM (Z.ai) → Kimi (Moonshot) → MiniMax → Mistral → Grok (xAI) → Together → Fireworks → Ollama → BytePlus Ark → Volcengine Ark 優先。claude / gemini / openai / qwen / openrouter / github / hermes / deepseek / zai / kimi / minimax / mistral / grok / together / fireworks / ollama / ark / arkcn = 優先該供應方 —— 但若其金鑰未設定,則回退到你已設定的任一其他供應方。僅當完全沒有供應方金鑰時 → 回退到手動提示詞。",
+  'config.providerModelNote': "career-ops 與 CLI 無關 — 你在任意 AI 編碼 CLI(Claude Code · Cursor · Codex · Gemini · OpenCode · Antigravity · Grok Build · Qwen · Copilot · Kimi)中執行它,各自有自己的登入。此 Web UI 是獨立的:其 ⚡ 即時評估以無頭方式執行,使用下方19 個供應方金鑰中的任意一個 — Anthropic · Gemini · OpenAI · Qwen · OpenRouter · GitHub Models · Hermes · Featherless · DeepSeek · GLM (Z.ai) · Kimi · MiniMax · Mistral · Grok · Together · Fireworks · Ollama · BytePlus Ark · Volcengine Ark — 自動排序,當固定的供應方沒有金鑰時回退。",
   'config.openaiKey': "OPENAI_API_KEY",
   'config.openaiHint': "platform.openai.com → API keys。v1.55.0：也執行 web-ui 即時評估（auto 順序中第 3 位，在 Anthropic 與 Gemini 之後）；父專案 Codex/OpenAI CLI 流程仍會讀取。",
   'config.anthropicKey': "Anthropic API 金鑰 (Claude)",
@@ -564,7 +567,7 @@ window.__I18N_DICT_ZH_TW = {
   'scan.consoleReady': "> 就緒。按 scan。",
   'scan.noResults': "無結果。在上方執行掃描 — 完成後將顯示在此處。",
   'app.setupIssue': "設定問題:",
-  'onboarding.noKey.title': "未設定 LLM 金鑰 ——「⚡ 即時執行」處於手動提示模式。請設定 Anthropic / Gemini / OpenAI / Qwen 任一個。",
+  'onboarding.noKey.title': "未設定 LLM 金鑰 ——「⚡ 即時執行」處於手動提示模式。請設定 Anthropic / Gemini / OpenAI / Qwen / Featherless 任一個。",
   'onboarding.noKey.cta': "設定金鑰 →",
   'onboarding.activeProvider': "即時評估",
   'cost.estimate': "預估費用",
