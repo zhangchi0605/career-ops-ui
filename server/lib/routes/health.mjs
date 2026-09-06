@@ -148,7 +148,7 @@ export function registerHealthRoutes(app) {
     // FIX-C6 — directories the scripts write into (auto-created on
     // first write; surfacing the state mirrors `node doctor.mjs`).
     for (const [label, dir] of [
-      ['data/ directory',    PATHS.applications.replace(/\/applications\.md$/, '')],
+      ['data/ directory',    PATHS.applications.replace(/[\\/]+applications\.md$/, '')],
       ['reports/ directory', PATHS.reportsDir],
       ['output/ directory',  PATHS.outputDir],
       ['jds/ directory',     PATHS.jdsDir],
