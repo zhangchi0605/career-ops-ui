@@ -1,7 +1,8 @@
 /* global Router, API, UI, I18n */
 /**
- * #/portals — the companies the scanner watches (parent `portals.yml`
- * `tracked_companies:`) + an on-demand liveness check + "Discover ATS board".
+ * #/portals — the companies and job boards the scanner watches (parent
+ * `portals.yml` `tracked_companies:` + `job_boards:`) + an on-demand liveness
+ * check + "Discover ATS board".
  *
  * An ATS slug can quietly break (a company renames its board or moves off
  * Greenhouse) and then that employer silently disappears from every future scan
@@ -132,8 +133,12 @@ Router.register('portals', async () => {
   async function loadCompanies() {
     try {
       const r = await API.get('/api/portals');
-      const tracked = (r && r.portals && (r.portals.tracked_companies || r.portals.companies)) || [];
-      companies = (Array.isArray(tracked) ? tracked : []).map((co) => ({
+      const p = (r && r.portals) || {};
+      const tracked = Array.isArray(p.tracked_companies)
+        ? p.tracked_companies.slice()
+        : (Array.isArray(p.companies) ? p.companies.slice() : []);
+      if (Array.isArray(p.job_boards)) tracked.push(...p.job_boards);
+      companies = tracked.map((co) => ({
         name: typeof co.name === 'string' ? co.name : '',
         careers_url: typeof co.careers_url === 'string' ? co.careers_url : (typeof co.api === 'string' ? co.api : ''),
         provider: typeof co.provider === 'string' ? co.provider : '',

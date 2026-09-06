@@ -204,7 +204,7 @@
           phase = (data.script === 'en-scanner') ? 'ats' : 'regional';
           appendMeta(consoleEl,
             phase === 'ats'
-              ? '▶ ATS scan (Greenhouse + Ashby + Lever + Workable + SmartRecruiters + Workday + RSS)\n'
+              ? '▶ Direct-source scan (ATS + Swiss boards + RSS)\n'
               : '\n▶ Regional scan (hh.ru + Habr Career)\n');
         } else if (ev === 'progress') {
           setScanProgress(data.done, data.total);

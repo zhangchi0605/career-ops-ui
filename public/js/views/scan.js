@@ -40,10 +40,17 @@ Router.register('scan', async () => {
   catch { twoPagerData = null; }
 
   const p = portalsData?.portals || {};
-  const companies = (p.tracked_companies || p.companies || []).filter((c) => c.enabled !== false);
+  const configuredCompanies = Array.isArray(p.tracked_companies)
+    ? p.tracked_companies.slice()
+    : (Array.isArray(p.companies) ? p.companies.slice() : []);
+  // Parent career-ops keeps board-wide sources (for example the Swiss
+  // JobCloud family and jobs.admin.ch) under `job_boards`. Surface the same
+  // entries in the UI that the server scanner actually executes.
+  if (Array.isArray(p.job_boards)) configuredCompanies.push(...p.job_boards);
+  const companies = configuredCompanies.filter((co) => co && co.enabled !== false);
   const apiCompanies = companies.filter((co) =>
-    co.api ||
-    /jobs\.ashbyhq\.com|jobs\.lever\.co|job-boards\.greenhouse\.io/.test(co.careers_url || '')
+    co.api || co.provider ||
+    /jobs\.ashbyhq\.com|jobs\.lever\.co|job-boards\.greenhouse\.io|jobs\.ch|jobup\.ch|jobwinner\.ch|topjobs\.ch|alpha\.ch|jobs\.admin\.ch|jobsswitzerland\.ch|joinup\.ch|remotli\.ch/.test(co.careers_url || '')
   );
 
   // v1.46.0 (WS2 #5) — the SSE log is an aria-live log region so SR
@@ -195,7 +202,7 @@ Router.register('scan', async () => {
   const scanBtn = c('button', {
     className: 'btn btn-primary scan-run-btn',
     onClick: () => runner.runScanAll(),
-    title: 'Greenhouse + Ashby + Lever + Workable + SmartRecruiters + Workday + RSS + hh.ru + Habr Career',
+    title: 'All enabled ATS, Swiss job boards, RSS and regional sources',
   }, '🌐 ' + t('scan.btnRun', 'Scan'));
   const stopBtn = c('button', {
     className: 'btn btn-ghost scan-stop-btn',
@@ -370,7 +377,8 @@ Router.register('scan', async () => {
       c('div', null, [
         HelpHint.title(t('scan.title'), 'help.hint.scan'),
         // F-010: neutral label, no EN/RU split. apiCompanies is the
-        // count of ATS-tracked companies; the rest are regional portals.
+        // count of configured direct sources; the rest are web-search-only
+        // entries from portals.yml.
         c('p', { className: 'page-subtitle' }, t('scan.subtitle')),
       ]),
     ]),
@@ -443,7 +451,7 @@ Router.register('scan', async () => {
     ]),
 
     (() => {
-      // Companies list — collapsed by default, expand on click, with a
+      // Sources list — collapsed by default, expand on click, with a
       // search filter + visual grouping by API support. 87 entries flat
       // is overwhelming; this lets the user dive in only when needed.
       const list = c('div', {

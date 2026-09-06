@@ -31,6 +31,14 @@ before(async () => {
     '  - name: Ash-Co',
     '    careers_url: https://jobs.ashbyhq.com/ashco',
     '    enabled: true',
+    'job_boards:',
+    '  - name: Swiss Board-Co',
+    '    careers_url: https://www.jobs.ch/en/vacancies/',
+    '    provider: jobcloud',
+    '    jobcloud:',
+    '      queries: ["Procurement"]',
+    '    max_pages: 1',
+    '    enabled: true',
     'title_filter:',
     '  positive: ["Senior", "Lead"]',
     '  negative: ["Junior"]',
@@ -120,6 +128,7 @@ test('detectApi: auto-detects ashby/lever/greenhouse from careers_url', () => {
   assert.equal(detectApi({ careers_url: 'https://jobs.ashbyhq.com/foo' }).type, 'ashby');
   assert.equal(detectApi({ careers_url: 'https://jobs.lever.co/foo' }).type, 'lever');
   assert.equal(detectApi({ careers_url: 'https://job-boards.greenhouse.io/foo/x' }).type, 'greenhouse');
+  assert.equal(detectApi({ provider: 'jobcloud', careers_url: 'https://www.jobs.ch/en/vacancies/' }).type, 'jobcloud');
 });
 
 test('detectApi: returns null for plain corporate URLs', () => {
@@ -144,6 +153,18 @@ test('runEnScan: dry-run end-to-end across multiple sources, applies title filte
         jobs: [{ id: 'a', title: 'Senior Go Engineer', location: 'Remote', isRemote: true, workplaceType: 'Remote', jobUrl: 'https://ash.example/a', publishedAt: '2026-01-02', compensation: {} }],
       }), { status: 200, headers: { 'content-type': 'application/json' } });
     }
+    if (url.includes('jobs.ch')) {
+      const body = `<script type="application/ld+json">${JSON.stringify({
+        '@type': 'ItemList',
+        itemListElement: [{ item: {
+          '@type': 'JobPosting', title: 'Senior Procurement Manager',
+          url: 'https://www.jobs.ch/en/vacancies/detail/fixture/',
+          hiringOrganization: { name: 'Swiss Board-Co' },
+          jobLocation: { address: { addressLocality: 'Zug', addressCountry: 'CH' } },
+        } }],
+      })}</script>`;
+      return new Response(body, { status: 200, headers: { 'content-type': 'text/html' } });
+    }
     throw new Error('unknown URL ' + url);
   };
   const result = await runEnScan({
@@ -156,6 +177,7 @@ test('runEnScan: dry-run end-to-end across multiple sources, applies title filte
   assert.ok(result.counts.raw >= 1, 'raw count: ' + result.counts.raw);
   // Senior PHP + Senior Go should pass positives → at least 1 fresh
   assert.ok(result.counts.fresh >= 1, 'fresh: ' + result.counts.fresh);
+  assert.ok(result.fresh.some((j) => j.source === 'jobcloud'), 'job_boards entries should be scanned');
   // Each fresh has the rich fields
   for (const f of result.fresh) {
     assert.ok('isRemote' in f);
@@ -167,7 +189,19 @@ test('runEnScan: dry-run end-to-end across multiple sources, applies title filte
 
 test('runEnScan: continues when one company returns 500', async () => {
   const fakeFetch = async (url) => {
-    if (url.includes('cockroach')) return new Response('boom', { status: 500 });
+    if (url.includes('greenhouse')) return new Response('boom', { status: 500 });
+    if (url.includes('jobs.ch')) {
+      const body = `<script type="application/ld+json">${JSON.stringify({
+        '@type': 'ItemList',
+        itemListElement: [{ item: {
+          '@type': 'JobPosting', title: 'Senior Procurement Manager',
+          url: 'https://www.jobs.ch/en/vacancies/detail/fixture-error-test/',
+          hiringOrganization: { name: 'Swiss Board-Co' },
+          jobLocation: { address: { addressLocality: 'Zug', addressCountry: 'CH' } },
+        } }],
+      })}</script>`;
+      return new Response(body, { status: 200, headers: { 'content-type': 'text/html' } });
+    }
     return new Response(JSON.stringify({
       jobs: [{ id: 99, title: 'Senior Backend Engineer', company_name: 'OK-Co', absolute_url: 'https://ok.example/99', location: { name: 'Remote' }, offices: [], first_published: '2026-01-03' }],
     }), { status: 200, headers: { 'content-type': 'application/json' } });
@@ -191,7 +225,7 @@ test('runEnScan: onProgress fires per company and reaches total/total', async ()
   });
   assert.ok(progress.length >= 1, 'onProgress should fire at least once');
   const [lastDone, lastTotal] = progress[progress.length - 1];
-  assert.equal(lastTotal, 2, 'two API companies (GH-Co, Ash-Co)');
+  assert.equal(lastTotal, 3, 'two tracked companies plus one job_boards entry');
   assert.equal(lastDone, lastTotal, 'final progress should be done===total');
   for (let i = 1; i < progress.length; i++) {
     assert.ok(progress[i][0] >= progress[i - 1][0], 'done is non-decreasing');

@@ -1,11 +1,12 @@
 /**
  * Portals health routes (v1.99.0).
  *
- * The scanner watches a set of companies declared in `portals.yml`
- * (`tracked_companies:`). An ATS slug can quietly break — a company renames its
- * board or moves off Greenhouse — and then that employer silently vanishes from
- * every future scan with no error. This surfaces that: list the watched
- * companies and, on demand, HEAD/GET each `careers_url` to flag the dead ones.
+ * The scanner watches companies and board-wide sources declared in `portals.yml`
+ * (`tracked_companies:` and `job_boards:`). An ATS slug can quietly break — a
+ * company renames its board or moves off Greenhouse — and then that employer
+ * silently vanishes from every future scan with no error. This surfaces that:
+ * list the watched portals and, on demand, HEAD/GET each `careers_url` to flag
+ * the dead ones.
  *
  *   POST /api/portals/health  → probe every enabled company's careers_url and
  *                               report { probed, dead, results:[{name,url,status,ok}] }.
@@ -35,8 +36,10 @@ function loadTracked() {
   } catch {
     return null;
   }
-  const tracked = doc.tracked_companies || doc.companies || [];
-  if (!Array.isArray(tracked)) return [];
+  const tracked = Array.isArray(doc.tracked_companies)
+    ? doc.tracked_companies.slice()
+    : (Array.isArray(doc.companies) ? doc.companies.slice() : []);
+  if (Array.isArray(doc.job_boards)) tracked.push(...doc.job_boards);
   return tracked.slice(0, MAX_COMPANIES).map((c) => ({
     name: typeof c.name === 'string' ? c.name : '',
     careers_url: typeof c.careers_url === 'string' ? c.careers_url : (typeof c.api === 'string' ? c.api : ''),

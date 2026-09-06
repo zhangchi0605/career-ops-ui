@@ -107,6 +107,11 @@ test('parsePipeline: ignores non-URL lines in fence', () => {
   assert.deepEqual(parsePipeline(md), ['https://x.com/1']);
 });
 
+test('parsePipeline: reads the parent markdown checklist and ignores processed rows', () => {
+  const md = `# Pipeline\n\n## Pending\n\n- [ ] https://jobs.ch/one | Acme | Procurement Manager | Zug\n- [ ] https://jobup.ch/two | Beta | Buyer | Zurich\n\n## Processed\n\n- [x] https://jobs.ch/old | Old Co | Buyer | Basel\n`;
+  assert.deepEqual(parsePipeline(md), ['https://jobs.ch/one', 'https://jobup.ch/two']);
+});
+
 // ───────────────────────── addPipelineUrl ─────────────────────────
 
 test('addPipelineUrl: adds new url', () => {
@@ -171,6 +176,16 @@ test('addPipelineUrl: no comp → bare URL line (backward compatible)', () => {
   assert.match(after, /```\nhttps:\/\/x\.com\/1\n```/);
 });
 
+test('addPipelineUrl: preserves and extends the parent markdown checklist', () => {
+  const before = '# Pipeline\n\n## Pending\n\n- [ ] https://a.com/1 | Acme | Buyer | Zug\n\n## Processed\n';
+  const after = addPipelineUrl(before, 'https://b.com/2', { comp: '120000 CHF' });
+  assert.match(after, /- \[ \] https:\/\/a\.com\/1 \| Acme \| Buyer \| Zug/);
+  assert.match(after, /- \[ \] https:\/\/b\.com\/2 \| 120000 CHF/);
+  assert.match(after, /https:\/\/b\.com\/2[\s\S]*## Processed/);
+  assert.deepEqual(parsePipeline(after), ['https://a.com/1', 'https://b.com/2']);
+  assert.equal(addPipelineUrl(before, 'https://a.com/1'), before, 'checklist URLs dedupe canonically');
+});
+
 test('addPipelineUrl: comp is hard-capped to 80 chars TOTAL (formula-lead reserves the quote)', () => {
   // (a) formula-lead, over length → quote + 79 content chars = 80 total (not 81)
   const after = addPipelineUrl('', 'https://x.com/1', { comp: '=' + 'A'.repeat(85) });
@@ -190,6 +205,13 @@ test('removePipelineUrl: removes url', () => {
   const before = '```\nhttps://a.com/1\nhttps://b.com/2\n```';
   const after = removePipelineUrl(before, 'https://a.com/1');
   assert.deepEqual(parsePipeline(after), ['https://b.com/2']);
+});
+
+test('removePipelineUrl: removes only the matching pending checklist row', () => {
+  const before = '# Pipeline\n\n- [ ] https://a.com/1 | Acme | Buyer | Zug\n- [ ] https://b.com/2 | Beta | Buyer | Bern\n\n## Processed\n- [x] https://a.com/1 | Acme | Buyer | Zug\n';
+  const after = removePipelineUrl(before, 'https://a.com/1');
+  assert.deepEqual(parsePipeline(after), ['https://b.com/2']);
+  assert.match(after, /\[x\] https:\/\/a\.com\/1/, 'processed history is preserved');
 });
 
 // ───────────────────────── parseReportHeader ─────────────────────────

@@ -81,10 +81,10 @@ In-process scanner for 5 RU portals (since v1.29.0): hh.ru, Habr Career, Trudvse
 
 ### `en-scanner.mjs` (230 LOC)
 
-Same shape but for the 6 EN ATS via `lib/sources/*.mjs` (Greenhouse / Ashby / Lever / Workable / SmartRecruiters / Workday).
+Same shape but for configured EN employer ATS and regional job boards via `lib/sources/*.mjs` (including Greenhouse / Ashby / Lever / Workable / SmartRecruiters / Workday and Swiss-native sources).
 
 - `runEnScan({ writeFiles, companyName?, onLog })` — `companyName` filters the company list to one entry.
-- Reads `tracked_companies:` from `portals.yml` (career-ops v1.7+) and falls back to legacy `companies:`. Only entries with `enabled !== false` are scanned.
+- Reads `tracked_companies:` plus board-wide `job_boards:` from `portals.yml` (falling back to legacy `companies:`). Only entries with `enabled !== false` are scanned.
 - `loadLastScan()` — reads `data/last-scan.json`, returns `{ en, ru, ... }` keyed by scan kind (or empty on missing).
 - **`MAX_STORED_RESULTS`** (v1.69.1) — exported here and shared with `ru-scanner.mjs`. Caps how many *matching* (post-filter) results each scanner stores in `data/last-scan.json` / renders in the `#/scan` table. Default **2000**, override via `SCAN_MAX_RESULTS`. Was a hard `slice(0, 500)` per region that silently truncated large regional sweeps (RU 1352 → 500). **Display-only** — appending to `pipeline.md` / `scan-history.tsv` uses the uncapped `fresh` set and is never truncated.
 

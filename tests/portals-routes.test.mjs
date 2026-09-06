@@ -22,6 +22,10 @@ const PORTALS = `tracked_companies:
   - name: Globex
     careers_url: https://jobs.globex.com
     enabled: false
+job_boards:
+  - name: Swiss Board
+    careers_url: http://127.0.0.1:10/jobs
+    provider: jobcloud
 `;
 
 before(async () => {
@@ -52,10 +56,11 @@ test('POST /api/portals/health probes only enabled companies; SSRF-blocked URL â
   const r = await fetch(`${baseUrl}/api/portals/health`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' });
   assert.equal(r.status, 200);
   const j = await r.json();
-  assert.equal(j.probed, 1); // only Acme is enabled
-  assert.ok(Array.isArray(j.results) && j.results.length === 1);
+  assert.equal(j.probed, 2); // Acme + the enabled job board
+  assert.ok(Array.isArray(j.results) && j.results.length === 2);
   assert.equal(j.results[0].name, 'Acme');
   assert.equal(j.results[0].ok, false); // loopback rejected by the SSRF guard
+  assert.ok(j.results.some((x) => x.name === 'Swiss Board' && x.ok === false), 'enabled job board must be probed');
   assert.ok(!j.results.some((x) => x.name === 'Globex'), 'disabled company must not be probed');
 });
 

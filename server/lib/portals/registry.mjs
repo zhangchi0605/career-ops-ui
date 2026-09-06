@@ -134,6 +134,10 @@ import { torreAdapter } from './adapters/torre.mjs';
 import { itviecAdapter } from './adapters/itviec.mjs';
 import { telegramAdapter } from './adapters/telegram.mjs';
 import { careervietAdapter } from './adapters/careerviet.mjs';
+// v1.231.0 — Swiss-native job boards ported from the parent integration.
+import { jobcloudAdapter } from './adapters/jobcloud.mjs';
+import { jobsAdminAdapter } from './adapters/jobs-admin.mjs';
+import { jobsswitzerlandAdapter } from './adapters/jobsswitzerland.mjs';
 import { builtinAdapter } from './adapters/builtin.mjs';
 import { feishuJobsAdapter } from './adapters/feishu-jobs.mjs';
 import { garenaAdapter } from './adapters/garena.mjs';
@@ -259,6 +263,9 @@ export const ALL_ADAPTERS = [
   itviecAdapter,
   telegramAdapter,
   careervietAdapter,
+  jobcloudAdapter,
+  jobsAdminAdapter,
+  jobsswitzerlandAdapter,
 ];
 
 /**

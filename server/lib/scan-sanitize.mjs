@@ -6,7 +6,7 @@
  * the scanners persist into two on-disk formats:
  *
  *   • data/scan-history.tsv  — tab-separated rows, one per posting
- *   • data/pipeline.md       — a fenced URL list
+ *   • data/pipeline.md       — pending URLs (legacy fenced list or markdown checklist)
  *
  * Without sanitization a posting whose company name contains a newline could
  * inject a whole extra TSV row, and a value beginning with `= + - @` becomes a

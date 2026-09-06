@@ -1,5 +1,5 @@
 /**
- * EN portal scanner — Greenhouse / Ashby / Lever.
+ * EN portal scanner — employer ATS and configured regional job boards.
  *
  * Drop-in replacement for the original scan.mjs but:
  *   - In-process (no subprocess)
@@ -171,7 +171,14 @@ export async function runEnScan(opts = {}) {
   const trustOn = !!(portals.trust_filter && portals.trust_filter.enabled !== false);
   const seen = loadSeenUrls();
 
-  let companies = portals.tracked_companies || portals.companies || [];
+  let companies = Array.isArray(portals.tracked_companies)
+    ? portals.tracked_companies.slice()
+    : (Array.isArray(portals.companies) ? portals.companies.slice() : []);
+  // The parent career-ops schema keeps board-wide feeds (and other provider-
+  // selected sources) under `job_boards`, while employer ATS entries live under
+  // `tracked_companies`. The two lists share the same entry shape and both are
+  // part of the user's configured scan surface.
+  if (Array.isArray(portals.job_boards)) companies = companies.concat(portals.job_boards);
   // v1.228.0 — `telegram_channels:` is its own top-level block. A channel is
   // not a company, and listing fifteen of them under `tracked_companies` buried
   // the actual employers. Expanding them here keeps ONE scan path: the entries

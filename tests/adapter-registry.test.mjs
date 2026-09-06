@@ -99,7 +99,7 @@ test('registry: Workday defaults site=External when careers_url omits site', () 
 
 test('registry: ALL_ADAPTERS has the expected entries', async () => {
   const { ALL_ADAPTERS } = await import('../server/lib/portals/registry.mjs');
-  assert.equal(ALL_ADAPTERS.length, 85);
+  assert.equal(ALL_ADAPTERS.length, 88);
   const ids = ALL_ADAPTERS.map((a) => a.id).sort();
   assert.deepEqual(ids, [
     '4dayweek', 'a16z-speedrun-talent', 'agenticjobs', 'alibaba', 'amazon', 'arbeitnow',
@@ -107,7 +107,7 @@ test('registry: ALL_ADAPTERS has the expected entries', async () => {
     'careerviet', 'comeet', 'consider', 'cryptocurrencyjobs', 'csod', 'dassault',
     'deutschebahn', 'eightfold', 'feishu-jobs', 'flowxtra', 'garena', 'gem', 'getonbrd',
     'getro', 'glints', 'greenhouse', 'hackernews', 'hecklerkoch', 'higheredjobs', 'himalayas',
-    'ibm', 'icims', 'itviec', 'jibeapply', 'jobbankca', 'jobicy', 'jobspresso', 'jobstreet',
+    'ibm', 'icims', 'itviec', 'jibeapply', 'jobbankca', 'jobcloud', 'jobicy', 'jobs-admin', 'jobspresso', 'jobsswitzerland', 'jobstreet',
     'jobvite', 'join', 'joinup', 'justjoin', 'landingjobs', 'larajobs', 'lever', 'manfred',
     'meituan', 'mokahr', 'mycareersfuture', 'nodesk', 'nofluffjobs', 'oraclecloud', 'personio',
     'phenom', 'pinpoint', 'radancy', 'recruitee', 'remoteok', 'remotive', 'remotli',
