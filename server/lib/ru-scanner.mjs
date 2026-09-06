@@ -18,6 +18,7 @@
  * dispatcher loop below uses `RU_DISPATCH` to map config-key → adapter.
  */
 import { readFileSync, existsSync, appendFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { dirname } from 'node:path';
 import yaml from 'js-yaml';
 import { PATHS } from './paths.mjs';
 import { searchHH } from './sources/hh.mjs';
@@ -400,12 +401,12 @@ function appendToPipeline(jobs) {
   let updated = content;
   // v1.75.0 (#1098) — see en-scanner: normalize external URLs before write.
   for (const j of jobs) updated = addPipelineUrl(updated, normalizeScanUrl(j.url));
-  mkdirSync(PATHS.pipeline.replace(/\/[^/]+$/, ''), { recursive: true });
+  mkdirSync(dirname(PATHS.pipeline), { recursive: true });
   writeFileSync(PATHS.pipeline, updated);
 }
 
 function appendToHistory(jobs) {
-  mkdirSync(PATHS.scanHistory.replace(/\/[^/]+$/, ''), { recursive: true });
+  mkdirSync(dirname(PATHS.scanHistory), { recursive: true });
   // v1.75.0 (#1098) — sanitize every TSV cell (newline-row-injection + formula).
   const lines = jobs.map((j) =>
     [

@@ -11,6 +11,7 @@
  * Reads the same portals.yml as scan.mjs.
  */
 import { readFileSync, existsSync, writeFileSync, appendFileSync, mkdirSync } from 'node:fs';
+import { dirname } from 'node:path';
 import yaml from 'js-yaml';
 import { PATHS } from './paths.mjs';
 import { addPipelineUrl } from './parsers.mjs';
@@ -341,11 +342,11 @@ function appendToPipeline(jobs) {
   // v1.84.0 (#1017) — persist compensation as an optional trailing column
   // (`url | <salary>`); web-ui jobs already carry a display salary string.
   for (const j of jobs) updated = addPipelineUrl(updated, normalizeScanUrl(j.url), { comp: j.salary });
-  mkdirSync(PATHS.pipeline.replace(/\/[^/]+$/, ''), { recursive: true });
+  mkdirSync(dirname(PATHS.pipeline), { recursive: true });
   writeFileSync(PATHS.pipeline, updated);
 }
 function appendToHistory(jobs) {
-  mkdirSync(PATHS.scanHistory.replace(/\/[^/]+$/, ''), { recursive: true });
+  mkdirSync(dirname(PATHS.scanHistory), { recursive: true });
   // v1.75.0 (#1098) — sanitize every TSV cell so an external company/title with
   // a newline can't inject a row and a leading =+-@ can't become a formula.
   const lines = jobs.map((j) =>
@@ -364,7 +365,7 @@ export function saveLastScan(payload) {
     prev = JSON.parse(readFileSync(LAST_SCAN_PATH, 'utf8'));
   } catch {}
   prev[payload.kind] = payload;
-  mkdirSync(LAST_SCAN_PATH.replace(/\/[^/]+$/, ''), { recursive: true });
+  mkdirSync(dirname(LAST_SCAN_PATH), { recursive: true });
   writeFileSync(LAST_SCAN_PATH, JSON.stringify(prev, null, 2));
 }
 
